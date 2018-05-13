@@ -33,6 +33,17 @@ case $n in
      printf "\nPresione una tecla para continuar";read
      ;;
   2)
+    printf "2) Ejectura una tarea que se ejecute con cierta recurrencia.\n
+    Ingrese la tarea que desea ejecutar: \n"
+    read tareaRec;
+    printf "\nIngrese la recurrencia: \n"
+    read rec;
+    x=1
+    while [ $x -le $rec ]
+      do
+        $tareaRec
+        x=$(( $x + 1 ))
+    done
     printf "\nPresione una tecla para continuar";read 
     ;;
   3)
