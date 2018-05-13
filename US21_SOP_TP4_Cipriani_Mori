@@ -1,19 +1,50 @@
 #!/bin/bash
-while :
-	do
-		printf "Seleccione una opción: \n
-		1) Ejecutar una tarea.\n
-		2) Programar una tarea.\n
-		3) Mostrar tareas programadas.\n
-		4) Salir.\n\n
-		:"
-
-		read n
-		case $n in
-		    1) printf "Ingrese tarea"; read j; $j;; #Agregar hora con crontab
-		    2) exit;; 
-		    3) crontab -l;;
-		    4) exit;;
-		    *) printf "Opción no válida, seleccione nuevamente\n______________________\n";;
-		esac
+until [[ $n -eq 4 ]]; do
+  clear
+  printf "Programador de tareas: \n
+  1) Ejecutar una tarea por única vez.
+  2) Programar una tarea recurrente.
+  3) Ver tareas programadas.
+  4) Salir.\n
+  Seleccione una opción: "
+  read n
+  clear
+case $n in
+  1)
+    printf "1) Ejecutar una tarea por única vez.\n"
+    printf "------------------------------------"
+    printf "Ingrese la fecha y hora a la que se programará la tarea: \n"
+	  printf "Use el siguiente formato: "
+    printf "\n * * * * * "
+    printf "\n - - - - - "
+    printf "\n | | | | |"
+    printf "\n | | | | ----- Día de la semana (0 - 7) (Domingo = 0 ó 7)"
+    printf "\n | | | ------- Mes (1 - 12)"
+    printf "\n | | --------- Día del mes (1 - 31)"
+    printf "\n | ----------- Hora (0 - 23)"
+    printf "\n ------------- Minuto (0 - 59)"
+    printf "\n: "
+	   read fechaCron
+     printf "\n"
+     printf "Ingrese la tarea que desea ejecutar: "
+     printf "\n: "
+     read tareaCron;
+     (crontab -l; echo "$fechaCron $tareaCron" ) | crontab -
+     printf "\nPresione una tecla para continuar";read
+     ;;
+  2)
+    printf "\nPresione una tecla para continuar";read 
+    ;;
+  3)
+    printf "3) Ver tareas programadas."
+    printf "\n"
+    crontab -l
+    printf "\nPresione una tecla para continuar";read;;
+  4)
+    clear
+    exit;;
+  *)
+    printf "Opción no válida."
+    printf "\nPresione una tecla para continuar";read
+esac
 done
