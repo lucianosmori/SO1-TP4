@@ -1,16 +1,19 @@
 #!/bin/bash
-printf "Seleccione una opción: \n
-1) Ejecutar una tarea.\n
-2) Programar una tarea.\n
-3) Mostrar tareas programadas.\n
-4) Salir.\n\n
-:"
+while :
+	do
+		printf "Seleccione una opción: \n
+		1) Ejecutar una tarea.\n
+		2) Programar una tarea.\n
+		3) Mostrar tareas programadas.\n
+		4) Salir.\n\n
+		:"
 
-read n
-case $n in
-    1) printf "Ingrese tarea"; read j; $j;; #Agregar hora con crontab
-    2) exit;; 
-    3) crontab -l;;
-    4) exit;;
-    *) printf "Opción no válida, seleccione nuevamente";;
-esac
+		read n
+		case $n in
+		    1) printf "Ingrese tarea"; read j; $j;; #Agregar hora con crontab
+		    2) exit;; 
+		    3) crontab -l;;
+		    4) exit;;
+		    *) printf "Opción no válida, seleccione nuevamente\n______________________\n";;
+		esac
+done
