@@ -1,3 +1,7 @@
+## Recordar hacer *chmod +x ./US21_SOP_TP4_Cipriani_Mori*
+
+---
+
 # SO1-TP4
 Administración de tareas programadas en Linux y Windows
 
