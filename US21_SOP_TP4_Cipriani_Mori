@@ -8,7 +8,7 @@ printf "Seleccione una opción: \n
 
 read n
 case $n in
-    1) ls -l /;;
+    1) printf "Ingrese tarea"; read j; $j;; #Agregar hora con crontab
     2) exit;; 
     3) crontab -l;;
     4) exit;;
